@@ -34,7 +34,11 @@
     try {
         const response = await fetch(url);
         const data = await response.json();
-        return data;
+        const sortedData = data.sort((a, b)=>{
+            a.price-b.price
+        });
+        const filteredData =sortedData.filter(item=>item.price>24);
+        return filteredData;
     } catch (error) {
         console.log(error);
         return [];
